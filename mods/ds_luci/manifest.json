@@ -1,0 +1,15 @@
+{
+  "id": "ds_luci",
+  "name": "LUCI Head Tracking for Dramatic Shape",
+  "version": "0.1.0",
+  "api": 2,
+  "entry": "main.lua",
+  "category": "GRAPHICS",
+  "priority": 200,
+  "permissions": ["network"],
+  "dependencies": ["DRAMATIC_SHAPE"],
+  "optional_dependencies": [],
+  "conflicts": [],
+  "affects_link": false,
+  "description": "Couples the Dramatic Shape Voxel Mod's diorama camera to LUCI Bar's local head-pose broker (ws://127.0.0.1:8765): head x/y swings the eye around the focus, z dollies. LUCI TRACK options row / hotkey 0; needs VOXEL mode on."
+}
