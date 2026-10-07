@@ -80,6 +80,44 @@ Constants at the top of `main.lua`:
 - `SMOOTH` — pose easing rate (per LUCI's contract this interpolates toward
   the *newest* pose only, never buffers old ones).
 
+## Battles
+
+DRAMATIC_SHAPE's staged 3D battle camera (`BattleCam.rig`, an
+eye/focus/fov placed shot rebuilt per frame) gets head coupling via the
+**BATTLE TRACK** ladder (Options, default LOCK):
+
+- **PAN** — offset the live shot's eye+focus together along its own
+  right/up axes. Translation-only "leaning"; the mod's mouse-steer
+  orbit/zoom stays active underneath. Confirmed working live but reads
+  as mostly panning.
+- **LOCK** — freeze the battle's first staged shot as a fixed **window
+  into the arena** and look into it off-axis: the window plane sits at
+  the frozen shot's focus, sized to exactly fill the base frame at focus
+  depth, and head motion translates the eye at constant orientation with
+  the frustum sheared about the plane (`Mat4.fovProjection`) — the same
+  fish-tank treatment as the overworld WINDOW rung, on the battle's
+  "diagonal" framing. Freezing also makes the mouse steering inert by
+  construction: its perturbations of the live shot are never consumed.
+  The frozen base expires half a second after the battle's camera streak
+  ends, so every battle freezes a fresh shot.
+
+VR eye cameras and the 1ST/3RD free-roam rigs are never touched in
+either mode.
+
+Notes from the battle-system survey (2026-08-06):
+
+- The mod's BATTLES setting ladder is `2D-3D A / 2D-3D B / STADIUM A /
+  STADIUM B / OFF`. The STADIUM rungs only appear after a one-time pack
+  build that asks for a **Pokémon Stadium N64 ROM** (`baseroms/
+  baserom.z64` in the save dir); declining hides them until next launch.
+- The "broken 2D battle" signature — vanilla battle but with the player's
+  mon showing its FRONT sprite in the back slot — means the 3D scene
+  renderer threw and retired for that session (`session.broken`); the
+  mod logs "draws on the plain battle background" and the F10 ERRORS feed
+  attributes the cause. It is not produced by this mod: during a staged
+  battle every camera call has the battle's rig installed, and ds_luci
+  never replaces an installed camera (it only offsets a copy of it).
+
 ## Known limits
 
 - Orbit rungs only: on 1ST/3RD rungs and in VR, DRAMATIC_SHAPE's own rigs
