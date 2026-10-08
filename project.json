@@ -1,0 +1,16 @@
+{
+  "schema": "atlas/1",
+  "id": "gen1recomp-diorama",
+  "title": "Gen1Recomp — Diorama",
+  "family": "gen1",
+  "role": "fork",
+  "status": "active",
+  "platforms": ["macos","windows"],
+  "machines": ["mac"],
+  "repo": "latentJake/gen1recomp",
+  "summary": "Jake's fork of Gen1Recomp carrying the ds_luci mod: LUCI head tracking wired into the Dramatic Shape voxel camera, so the game renders as a head-coupled diorama. Pushed to latentJake/gen1recomp on the diorama-luci branch; a PR to bryanthaboi upstream is possible later.",
+  "tags": ["love2d","lua","ds_luci","head-tracking","mod","diorama","voxel"],
+  "relations": {"forked_from":["gen1recomp"],"depends_on":["luci"],"related_to":["gen1luci"]},
+  "media": [],
+  "updated": "2026-10-08"
+}
